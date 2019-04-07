@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>AsyncProject</display-name>
+
+	<!-- 서블릿의 초기화때 개발자가 원하는 초기값을 넘겨줄 수 있듯, 
+		어플리케이션이 초기화 될때 개발자가 원하는 초기값을넘겨줄 수 있는데 
+		이때 사용되는 객체가 바로 LoaderListener 이다 -->
+<!-- 		
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>하이</param-value>
+	</context-param>		
+	<listener>
+		<listener-class>com.itbank.test.MyContextLoaderListener</listener-class>
+	</listener>		
+ -->	
+	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:com/itbank/spring/context/service.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>	
+
+ 	
+	<servlet>
+		<servlet-name>frontController</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>WEB-INF/front.xml</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>frontController</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
